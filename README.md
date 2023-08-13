@@ -30,10 +30,9 @@ cd vue-firebase-auth-vuex
 npm install || yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev || yarn dev
+npm run serve || yarn serve
 
-# build for production with minification and to build Progressive Web Apps
-npm run build || yarn build
+
 
 
 ```
