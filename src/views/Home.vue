@@ -21,7 +21,7 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        height: calc(100vh - 60px);
+        height: calc(100vh - 59px);
         width: 100vw;
     }
     .link-btn {
