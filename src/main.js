@@ -3,9 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue';
 import Login from '@/views/Login.vue'; 
 import Signup from '@/views/Signup.vue';
-import Products from '@/views/Products.vue';
 import PageNotFound from '@/views/PageNotFound.vue';
-import ProductDetails from '@/views/ProductDetails.vue'
+import Dashboard from '@/views/Dashboard.vue';
 import Home from '@/views/Home.vue'
 
 import { getAuth } from 'firebase/auth';
@@ -13,7 +12,7 @@ import { getAuth } from 'firebase/auth';
 
 const requireGuest = (to, from, next) => {
   if (getAuth().currentUser) {
-    next('/products')
+    next('/dashboard')
   } else {
     next();
   }
@@ -48,21 +47,14 @@ const router = createRouter({
         component: Signup,
        },
        {
-        path:"/products",
-        name:"Products",
-        component: Products,
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: Dashboard,
         meta: {
           requiresAuth: true
         }
-       },
-       {
-        path:"/products/:id/:slug",
-        name: "ProductDetails",
-        component: ProductDetails,
-        meta: {
-          requiresAuth: true
-        }
-       },
+    },
+       
        {
        path:"/:pathMactch(.*)*",
        name:"NotFound",
@@ -78,7 +70,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   if (requiresAuth && !currentUser) {
     next('/login');
-  } else if (to.name === 'Products' && !currentUser) {
+  } else if (to.name === 'Dashboard' && !currentUser) {
     next('/');
   } else {
     next();

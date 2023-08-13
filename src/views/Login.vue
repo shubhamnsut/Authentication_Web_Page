@@ -58,7 +58,7 @@ export default {
             signInWithEmailAndPassword(getAuth(), this.email, this.password)
                 .then(data => {
                     const router = this.$router;
-                    router.push('/products')
+                    router.push('/dashboard')
                     console.log(data);
                 })
                 .catch(error => {
@@ -107,6 +107,7 @@ body {
   padding: 36px 22px;
   border-radius: var(--b-radius-input-button);
   margin-top: 20px;
+  margin-bottom: 10px;
 
 }
 

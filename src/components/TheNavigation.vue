@@ -10,9 +10,10 @@
            <div class="nav-area" :class="displayClass">
             <div class="link-box">
                 <router-link @click="toggleMenu" to="/home" class="nav-link">Home</router-link>
-                <router-link @click="toggleMenu" to="/login" class="nav-link">Login</router-link>
-                <router-link @click="toggleMenu" to="/signup" class="nav-link">Sign up</router-link>
-                <router-link @click="toggleMenu" to="/products" class="nav-link">Products</router-link>
+                <router-link @click="toggleMenu" to="/login" class="nav-link" v-if="!isLoggedIn">Login</router-link>
+                <router-link @click="toggleMenu" to="/signup" class="nav-link" v-if="!isLoggedIn">Sign up</router-link>
+                <router-link @click="toggleMenu" to="/dashboard" class="nav-link">Dashboard</router-link>
+                 
               <router-link @click="toggleMenu" to='/home' @click.prevent="handleSignOut" v-if="isLoggedIn" class="nav-link">Log Out</router-link>
             </div>
            </div>
